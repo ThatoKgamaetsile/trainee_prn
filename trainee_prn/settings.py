@@ -17,9 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'trainee_prn'
 
 ETC_DIR = os.path.join(BASE_DIR, 'etc')
+
 # AUTO_CREATE_KEYS=True
 
-# KEY_PATH =
+# KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/

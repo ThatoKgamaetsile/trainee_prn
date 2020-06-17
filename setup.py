@@ -17,7 +17,7 @@ setup(
     author_email='tkgamaetsile@bhp.org.bw',
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/ThatoKgamaetsile/trainee-prn',
+    url='https://github.com/ThatoKgamaetsile/trainee_prn',
     license='GPL license, see LICENSE',
     description='trainee PRN.',
     long_description=README,

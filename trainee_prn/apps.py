@@ -6,14 +6,14 @@ style = color_style()
 
 class AppConfig(DjangoAppConfig):
     name = 'trainee_prn'
-    verbose_name = 'Trainee prn'
-    admin_site_name = 'Trainee prn_admin'
+    verbose_name = 'trainee prn'
+    admin_site_name = 'trainee_prn_admin'
 
     def ready(self):
         from .models import study_termination_conclusion_on_post_save
 
 
-if settings.APP_NAME == 'cancer_prn':
+if settings.APP_NAME == 'trainee_prn':
     from edc_visit_tracking.apps import (
         AppConfig as BaseEdcVisitTrackingAppConfig)
     from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
@@ -24,5 +24,5 @@ if settings.APP_NAME == 'cancer_prn':
         configurations = [
             AppointmentConfig(
                 model='edc_appointment.appointment',
-                related_visit_model='cancer_subject.subjectvisit')
+                related_visit_model='trainee_subject.subjectvisit')
         ]

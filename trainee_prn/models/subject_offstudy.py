@@ -1,4 +1,3 @@
-from django.apps import apps as django_apps
 from django.db import models
 from edc_base.model_fields.custom_fields import OtherCharField
 from edc_base.model_managers import HistoricalRecords
@@ -13,7 +12,7 @@ from edc_protocol.validators import datetime_not_before_study_start
 from edc_visit_schedule.model_mixins import OffScheduleModelMixin
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
-# from cancer_subject.models.onschedule import OnSchedule
+from trainee_subject.models.onschedule import OnSchedule
 from edc_action_item.model_mixins import ActionModelMixin
 
 from ..action_items import SUBJECT_OFFSTUDY_ACTION
@@ -50,7 +49,7 @@ class SubjectOffstudy(OffScheduleModelMixin, ActionModelMixin, BaseUuidModel):
 
     reason = models.CharField(
         verbose_name="Please code the primary"
-                     " reason participant taken off-study",
+        " reason participant taken off-study",
         max_length=115,
         choices=OFF_STUDY_REASON,
         null=True)
@@ -59,7 +58,7 @@ class SubjectOffstudy(OffScheduleModelMixin, ActionModelMixin, BaseUuidModel):
 
     schedule = models.CharField(
         verbose_name='Are scheduled data being submitted'
-                     ' on the off-study date?',
+        ' on the off-study date?',
         max_length=3,
         choices=YES_NO)
 
@@ -78,7 +77,7 @@ class SubjectOffstudy(OffScheduleModelMixin, ActionModelMixin, BaseUuidModel):
         super(SubjectOffstudy, self).save(*args, **kwargs)
 
     def take_off_schedule(self):
-        on_schedule = django_apps.get_model('trainee_subject.onschedule')
+        on_schedule = OnSchedule
         try:
             on_schedule_obj = on_schedule.objects.get(
                 subject_identifier=self.subject_identifier)
@@ -92,10 +91,3 @@ class SubjectOffstudy(OffScheduleModelMixin, ActionModelMixin, BaseUuidModel):
     class Meta:
         app_label = "trainee_prn"
         verbose_name_plural = "Subject Off Study"
-
-
-
-
-
-
-
